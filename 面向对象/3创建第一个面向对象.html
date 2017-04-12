@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>3创建第一个面向对象</title>
+ <script type="text/javascript">
+//创建一个对象
+//var obj = {};
+// 上下两种方法都是创建一个json对象，上面是下面的简写形式
+var obj = new Object(); //创建了一个空的对象
+/*
+空json对象和空数组有区别
+只不过数组下面有它的属性和方法，但是空的json对象它没有自己的属性也没有自己的方法
+这样的话，我们就可以在这个空对象下面任意的添加属性和方法
+*/
+obj.name = "小明";
+obj.showName = function(){
+	alert(obj.name);
+}
+
+//调用这个方法
+obj.showName()
+
+
+ </script>
+
+</head>
+<body>
+	
+</body>
+</html>

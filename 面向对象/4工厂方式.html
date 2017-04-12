@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>工厂方式</title>
+ <script type="text/javascript">
+//工厂方式:封装函数
+
+function createPerson(name){
+	var obj = new Object();
+	obj.name = name;
+	obj.showName = function(){
+		alert(this.name);
+	}
+	//因为这个方法要在封装函数外面调用，所以要把这个对象return出来
+	return obj;
+}
+//既然return出来，那么这里调用传入的就是obj
+// createPerson('小明');
+// createPerson('小强');
+
+// 既然传入的结果是obj，我们就直接在函数的后面加showName()来调用；
+// createPerson('小明').showName();
+// createPerson('小强').showName();
+// 这样封装函数就写好了
+
+// 我们还可以给它整理一下，起个名字
+var p1 = createPerson('小明');
+// 然后p1来调用showName();
+p1.showName();
+// p2来调用showName();
+var p2 = createPerson('小强');
+p2.showName();
+
+ </script>
+</head>
+<body>
+	
+</body>
+</html>

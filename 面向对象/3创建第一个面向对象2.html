@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>3创建第一个面向对象</title>
+ <script type="text/javascript">
+//面向对象的难点不在属性和方法上，在于一个叫this的东西
+//this我们都说过，它是一个指向，谁调用过它，它就指向谁
+var obj = new Object(); //创建了一个空的对象
+obj.name = "小明";
+obj.showName = function(){
+	alert(this.name);
+}
+//调用这个方法
+// obj.showName();
+
+//这时候还要写一个，于是我们把上面的代码复制一下，改一下
+
+var obj2 = new Object(); //创建了一个空的对象
+obj2.name = "小强";
+obj2.showName = function(){
+	alert(this.name);
+}
+//调用这个方法
+obj.showName();
+obj2.showName();
+
+//这个的话功能虽然实现了，但是没有做到代码的复用
+
+ </script>
+
+</head>
+<body>
+	
+</body>
+</html>

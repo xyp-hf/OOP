@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>原型</title>
+ <script type="text/javascript">
+//原型：去改写对象下面公用的方法或属性,让公用的方法或者属性在内存中只存在一份(提高性能)
+
+// 原型：我们可以把原型看做是css中的class
+// 普通方法: css中的style
+/*
+style 和 class的区别
+1、style的优先级要比class高
+2、style是没办法复用的，我们给一个元素添加的style只是给它添加了style，但是我们如果要是想用class，只要调用class名字就行了
+
+原型：prototype : 要写在构造函数的下面
+*/
+
+/*var arr = [1,2,3,4,5];
+var arr2 = [2,2,2,2,2];
+
+arr.sum = function(){
+	var result = 0;
+	for(var i=0;i < this.length;i++){
+		result +=this[i];
+	}
+	return result;
+};
+
+arr.sum2 = function(){
+	var result = 0;
+	for(var i=0;i < this.length;i++){
+		result +=this[i];
+	}
+	return result;
+};
+
+alert(arr.sum());
+alert(arr2.sum());*/
+
+var arr = [1,2,3,4,5];
+// 数组的原型要写在构造函数下面，那么数组的构造函数是谁呢？
+//构造函数就是new后面的那个，new Array(),所以数组的构造函数就是Array();
+//再来一个数组
+var arr2 = [2,2,2,2,2];
+
+Array.prototype.sum = function(){
+	var result = 0;
+	for(var i=0;i < this.length;i++){
+		result +=this[i];
+	}
+	return result;
+};
+
+// 调用
+alert(arr.sum());
+alert(arr2.sum());
+
+
+
+
+ </script>
+</head>
+<body>
+	
+</body>
+</html>

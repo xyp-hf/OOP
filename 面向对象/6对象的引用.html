@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>对象的引用</title>
+ <script type="text/javascript">
+
+ // 举个例子
+/* var a = [1,2,3];
+ var b = [1,2,3];
+
+ alert(a == b); //false*/
+
+/* var a = 5;
+ var b= a;
+ b += 3;
+ alert(b);//=> 8
+ alert(a);//=> 5 基本类型：赋值的时候只是值的赋值
+*/
+/*
+var a = [1,2,3];
+var b = a;
+b.push(4);
+alert(b);//[1,2,3,4]
+alert(a); //[1,2,3,4] 对象类型：赋值不仅仅是值的复制，也是引用的传递
+*/
+
+/*var a = [1,2,3];
+var b = a;
+b = [1,2,3,4];//给b重新复制
+alert(b);//[1,2,3,4] 只要在程序当中重新复制，必然要在内存当中重新生成
+alert(a);//[1,2,3] 既然b是重新生成，那么b和a没有关系*/
+
+/*var a = 5;
+var b = 5;
+alert(a == b);//=>true 基本类型：只要值相同就可以*/
+
+/*
+var a = [1,2,3];
+var b = [1,2,3];
+alert(a == b);//=>false 因为虽然值相同，但是引用不同 对象类型：值和引用都相同才行
+*/
+
+var a = [1,2,3];
+var b = a; //把值和引用都给b
+alert(a==b); //true
+
+
+
+ </script>
+</head>
+<body>
+	
+</body>
+</html>

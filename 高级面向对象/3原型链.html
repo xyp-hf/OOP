@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>原型链</title>
+<script type="text/javascript">
+//原型链：实例对象与原型之间的链接,叫做原型链
+//原型链的最外层 ： object.prototype
+
+function Aaa(){
+	this.num = 20;
+}
+
+Aaa.prototype.num = 10;
+
+var a1 = new Aaa();
+
+alert(a1.num);//=>10
+
+/*
+实例对象：a1
+原型：Aaa.prototype
+_proto_(隐式链接)
+
+*/
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

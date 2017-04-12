@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>对象的复制操作</title>
+<script type="text/javascript">
+//类： JS是没有类的概念的，把JS中的构造函数看做类
+//要做属性和方法继承的时候，要分开继承
+
+function Aaa(){
+	// this.name = '小明';
+		this.name = [1,2,3];
+}
+Aaa.prototype.showName = function(){
+	alert(this.name);
+};
+
+function Bob(){
+	Aaa.call(this);
+}
+var F = function(){};//避免属性继承，而只进行方法的继承
+F.prototype = Aaa.prototype;
+
+//直接把父类的对象赋给子类的原型称为类式继承
+Bbb.prototype = new F();
+Bbb.prototype.constructor = Bbb;//修正指向问题
+
+var b1 = new Bob();
+b1.showName();
+
+alert(b1.constructor);//
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>原型链</title>
+<script type="text/javascript">
+
+// hasOwnProperty:看是不是对象自身下面的属性
+// 例如
+var arr = [];
+arr.num = 10;
+Array.prototype.num2 = 20;
+
+//alert( arr.hasOwnProperty('num') );//=> true 表示这个num属性是这个arr独享的属性
+
+alert(arr.hasOwnProperty('num2'));
+//=> false 表示所有的数组对象都拥有了这个属性，而不仅仅是这个arr
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

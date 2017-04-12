@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>原型链</title>
+<script type="text/javascript">
+
+// constructor : 查看对象的构造函数
+/*
+function Aaa(){
+
+}
+var a1 = new Aaa();
+alert(a1.constructor); //=>function Aaa(){}
+
+var arr = [];
+alert(arr.constructor); //Array
+// 判断是不是数组
+alert(arr.constructor == Array); //true
+*/
+
+/*
+function Aaa(){
+
+}
+//程序会自动的帮我们添加
+//Aaa.prototype.constructor = Aaa; //每一个函数都会有的，都是自动生成的
+
+var a1 = new Aaa();
+alert(a1.constructor);
+
+alert(a1.hasOwnProperty == object.prototype.hasOwnProperty);
+*/
+function Aaa(){}
+Aaa.prototype.name = '小明';
+Aaa.prototype.age = 20;
+
+//或者这样写
+/*Aaa.prototype = {//重新赋值
+	constructor ：Aaa, //修正constructor
+	name : '小明',
+	age : 20
+};*/
+
+var a1 = new Aaa();
+alert(a1.constructor);
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

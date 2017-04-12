@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>继承</title>
+<script type="text/javascript">
+
+//继承：子类不影响父类，子类可以继承父类的一些功能(代码复用)
+//属性的继承：调用父类的构造函数 ，采用call修改this指向
+
+// 方法的继承：for in 拷贝继承 (Jquery 也是采用拷贝继承extend)
+
+
+function CreatePerson(name,sex){//父类
+	this.name = name;
+	this.sex = sex;
+}
+
+CreatePerson.prototype.showName = function(){
+	alert(this.name);
+};
+
+var p1 = new CreatePerson('小明','男');
+// p1.showName();
+
+function CreateStar(name,sex,job){//子类
+	CreatePerson.call(this,name,sex);//this=>p2
+	this.job = job;
+}
+
+
+//如何继承父类所有的方法，就是把父类的原型直接赋给子类的原型
+// 如何对值进行复制，而不是引用？
+// CreateStar.prototype = CreatePerson.prototype
+
+extend(CreateStar.prototype,CreatePerson.prototype);
+CreateStar.prototype.showJob = function(){
+
+}
+
+var p2 = new CreateStar('黄晓明','男','演员');
+
+p2.showName();
+
+
+//把一个对象的元素赋值给另一个对象元素
+function extend(obj1,obj2){
+	for(var attr in obj2){
+		obj1[attr] = obj2[attr]; 
+	}
+}
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

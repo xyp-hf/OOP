@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>面向对象的选项卡</title>
+<style type="text/css">
+#div1 div{width: 200px;height: 200px;border: 1px #000 solid;display:none;}
+.active{background:red;}
+</style>
+ <script type="text/javascript">
+ /*
+	改成面向对象之前，需要遵循一定的规则进行一定的变形
+	普通方法变形
+		1、尽量不要出现函数嵌套函数
+		2、可以有全局变量
+		3、把onload中不是赋值的语句放到单独的函数中
+ */
+/*window.onload = function(){
+	var oParent = document.getElementById('div1');
+ 	var aInput = oParent.getElementsByTagName('input');
+ 	var aDiv = oParent.getElementsByTagName('div');
+
+ 	for(var i=0;i<aInput.length;i++){
+ 		aInput[i].index = i;
+ 		aInput[i].onclick = function(){
+ 			for(var i=0;i<aInput.length;i++){
+ 				aInput[i].className= '';
+ 				aDiv[i].style.display = 'none';
+ 			}
+ 			this.className = 'active';
+ 			aDiv[this.index].style.display = 'block';
+ 		};
+ 	};
+};*/
+/*	var oParent = null;
+ 	var aInput = null;
+ 	var aDiv =  null;
+
+	window.onload = function(){
+		oParent = document.getElementById('div1');
+	 	aInput = oParent.getElementsByTagName('input');
+	 	aDiv = oParent.getElementsByTagName('div');
+
+	 	init();
+	};
+
+	function init(){//初始化函数方法
+		for(var i=0;i<aInput.length;i++){
+ 		aInput[i].index = i;
+ 		aInput[i].onclick = change;
+ 	};
+	}
+
+	function change(){
+			for(var i=0;i<aInput.length;i++){
+				aInput[i].className= '';
+				aDiv[i].style.display = 'none';
+			}
+			this.className = 'active';
+			aDiv[this.index].style.display = 'block';
+	};*/
+
+// 改成面向对象
+/*
+改成面向对象
+全局变量就是属性
+函数就是方法
+Onload中创建对象
+
+改this指向问题：事件或者定时器的时候,尽量让面向对象中的this指向对象
+*/
+
+window.onload = function(){
+	var t1 = new Tab();
+	t1.init();
+}
+
+//变量就是属性,这是给对象加上属性
+function Tab(){
+	this.oParent = document.getElementById('div1');
+ 	this.aInput = this.oParent.getElementsByTagName('input');
+ 	this.aDiv = this.oParent.getElementsByTagName('div');
+}
+
+//给对象加上方法，方法要加到原型上
+Tab.prototype.init = function(){
+	var This = this;
+	for(var i=0;i<this.aInput.length;i++){
+ 		this.aInput[i].index = i;
+ 		this.aInput[i].onclick = function(){
+
+ 			This.change(this);
+ 		};
+ 	};
+};
+
+Tab.prototype.change = function(obj){
+	for(var i=0;i<this.aInput.length;i++){
+		this.aInput[i].className= '';
+		this.aDiv[i].style.display = 'none';
+	}
+	obj.className = 'active';
+	this.aDiv[obj.index].style.display = 'block';
+}
+
+
+ </script>
+</head>
+<body>
+	<div id="div1">
+		<input class="active" type="button"  value="1"/>
+		<input type="button"  value="2"/>
+		<input type="button"  value="3"/>
+		<div style="display:block;">11111</div>
+		<div>22222</div>
+		<div>33333</div>
+	</div>
+</body>
+</html>

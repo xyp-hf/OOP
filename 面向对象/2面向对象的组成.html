@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "
+http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" charset="UTF-8">
+	<title>面向对象的组成</title>
+ <script type="text/javascript">
+//我们以系统对象来举例子
+//比如说我们创建一个系统方法,比如说创建一个数组
+var arr = [];
+//给数组添加一个属性
+arr.number = 10;
+/*
+本来如果我们定一个变量的话，我们会这样写
+var number = 10;
+但是如果我们把这个变量挂对象下面，我们就称之为这个对象的属性，比如说这样写
+
+arr.number
+
+属性的定义：对象下面的变量，叫做对象的属性
+
+*/
+
+
+//读取这个属性
+alert(arr.number);
+
+//对象的定义：把一个函数写到对象的下面，就叫做对象的方法
+arr.test = function(){
+	alert(123);
+}
+//调用这个方法
+arr.test();
+
+ </script>
+
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>instanceof</title>
+<script type="text/javascript">
+	// instanceof : 对象与构造函数在原型链上是否有关系
+	function Aaa(){
+
+	}
+
+	var a1 = new Aaa();
+	aleert( a1 instanceof Aaa );//=>true
+	aleert( a1 instanceof array );//=>false
+	aleert( a1 instanceof object );//true 任何对象最终都指向object
+
+// 判断是不是数组
+var arr = [];
+alert( arr instanceof array );//=>true
+
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+	<title>包装对象</title>
+<script type="text/javascript">
+/*
+//构造函数
+function Aaa(){
+	//属性
+	this.name = '小明';
+}
+//方法
+Aaa.prototype.showName = function(){
+	alert(this.name);
+};
+//创建
+var a1 = new Aaa();
+//调用方法
+a1.showNmae();
+
+
+// 在JS源码：系统对象也是基于原型的程序
+var arr = new Array();
+arr.push();
+arr.sort();
+
+function Array(){
+	this.length = 0;
+}
+Array.prototype.push = function(){};
+Array.prototype.sort = function(){};
+*/
+
+// 尽量不要修改或者添加系统对象下面的方法和属性
+var arr = [1,2,3];
+
+Array.prototype.push = function(){
+	// this : 1,2,3
+	// arguments : 4,5,6
+	for (var i = 0; i < arguments.length; i++) {
+		this[this.length] = arguments[i];
+	}
+	return this.length;
+};
+arr.push(4,5,6);
+
+alert( arr );
+
+</script>
+</head>
+<body>
+	
+</body>
+</html>
