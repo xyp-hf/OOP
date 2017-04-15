@@ -1,0 +1,187 @@
+
+css3:
+
+border-radius:左上  右上 右下  左下
+
+margin:上 右 下 左
+
+单位：
+1 px 绝对
+2 %  相对—— width
+3 em 相对 字体大小  1em = 16px
+
+圆：50% —— 超过半径即可！
+
+-----------------------------------------------------
+
+阴影：
+
+1 盒子阴影  box-shadow
+
+
+box-shadow:x y; 没有给颜色 默认颜色黑色
+box-shadow:x y color; 
+box-shadow:x y blur color; √√
+box-shadow:x       y       blur     R       color;  √
+           x偏移 y偏移  模糊度  扩展半径  模糊颜色
+
+2 文字阴影  text-shadow
+
+text-shadow：x y blur color; √√
+
+----------------------------------------------
+
+box/text-shadow：可以多个
+
+box-shadow:没有outset,不写就是外阴影，  只有inset内阴影
+
+--------------------------------------------------
+
+运动：transition：时间 属性 运动形式 延迟时间
+
+transition:1s all ease;
+
+时间:s  ms
+属性: 一般写all 所有属性
+运动形式：
+linear       匀速
+ease         缓冲
+ease-in      加速
+ease-out     减速
+ease-in-out  先加速后减速
+
+
+延迟时间 —— 永远写最后面！
+
+--------------------------------------------------
+
+rgba(r,g,b,a——[0,1]);
+
+有颜色的地方就可以用！
+--------------------------------------------------
+
+模糊：filter:blur(10px);
+
+filter: ff
+
+-webkit-filter: chrome  safari
+
+注意： 1、ie没有！
+       2、慎用 模糊—— 耗性能
+
+--------------------------------------------------
+
+前缀：
+-webkit-标准  
+-moz-标准
+-ms-标准
+-o-标准
+标准
+
+结论：以后只写2个
+
+-webkit-标准 
+标准
+
+ios:     apple      safari  -webkit
+android: google     chrome  -webkit
+
+--------------------------------------------------
+js: 添加 注意：ie:ms小写
+--------------------------------------------------
+
+渐变：
+
+线性：-webkit-linear-gradient(方向,颜色多个);
+方向:top( 默认值) left/right/bottom
+
+     deg(角度)
+
+     没有center
+     方向 不能是px
+
+
+径向：-webkit-raidal-gradient(方向,形状,颜色多个);
+方向:center( 默认值) left/top/right/bottom
+     像素值 【xpx ypx】
+     
+     方向不能是角度
+
+
+形状：椭圆(默认)ellipse   正圆 circle  
+
+      可以写px   [xpx  ypx]
+
+-------------------------------------------------
+
+渐变 有范围： 
+1 px
+2 %
+3 重复
+
+** repeating使用的时候必须有起点 0
+
+-webkit-repeating-linear/radial-graident(red 0px,red 10px,green 10px,green 20px);
+
+-------------------------------------------------
+
+变形：transform
+1旋转  rotate(ndeg);
+2缩放  scale(x倍数,y倍数);
+3扭曲  skew(xdeg,ydeg);
+4平移  translate(xpx/%,ypx/%);
+
+-------------------------------------------------
+
+时钟：
+
+一满圈 360度   
+
+小时: 30度
+分钟：6度
+秒：  6度
+
+16:13    13/60*30
+
+-------------------------------------------------
+
+以后最好用 transform ,少用left top
+
+1 重绘 重新渲染
+
+2 重排 重新排列
+
+transform不会改变盒模型！
+
+
+transform对内联元素无效！
+
+------------------------------------------------------
+
+蒙版：只显示有颜色的地方！
+
+-webkit-mask:url(xxxx.png);
+
+1图片蒙版 —— 只能使用png
+	-webkit-mask:url(xxxx.png);
+
+2渐变蒙版
+-webkit-mask:-webkit-linear-gradient();
+
+3文字蒙版
+-webkit-background-clip:text;
+	color:rgba(0,0,0,0);
+
+----------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

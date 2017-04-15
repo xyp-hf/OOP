@@ -1,0 +1,65 @@
+function unique(arr){
+    for(var i=0;i<arr.length;i++){
+        for(var j=i+1;j<arr.length;j++){
+            if(arr[i]==arr[j]){
+                arr.splice(j,1);//arr.splice(开始位置,要删除几个,要插入的数据)
+                j--;    
+            }   
+            //alert(arr);
+            //console.log(arr);
+            return arr;
+        }
+    }   
+}
+
+function unique(arr){
+    var arr2=[];
+    for(var i=0;i<arr.length;i++){  
+        //假设没找到的
+        var find=false;
+        //在arr2里面一个一个的找
+        for(var j=0;j<arr2.length;j++){
+            if(arr2[j]==arr[i]){
+                find=true;  //找到一个，结束小循环
+            }
+        }
+        //没找到，才添加
+        if(!find){
+            arr2.push(arr[i]);  
+        }   
+    }
+    return arr2;
+}
+
+function unique(arr){
+        var arr2=[];
+        for (var i = 0; i < arr.length; i++) 
+        {
+            var find=false;
+            for (var j = 0; j < arr2.length; j++) 
+            {
+                    if (arr2[j]==arr[i]) 
+                    {
+                        find=true;
+                        break;
+                    }else{
+                        find=false;
+                    }
+            }
+            if (!find) {
+                arr2.push(arr[i]);
+
+            }
+        }
+        return arr2
+    }
+
+function unique(arr){
+    var n = [];//一个新的临时数组
+    for (var i = 0; i < arr.length; i++) {
+        //如果当前数组的第i已经保存进了临时数组，那么跳过，
+        //否则把当前项push到临时数组里面
+        if (n.indexOf(arr[i]) == -1) n.push(arr[i]);
+    }
+    return n;
+}

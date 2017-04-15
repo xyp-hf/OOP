@@ -1,0 +1,109 @@
+<script src="http://apps.bdimg.com/libs/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+//插件体
+<script>
+(function($){
+    var defaults = {//默认信息
+        heads : ['1','2','3'],//默认卡头文字
+        bodys : ['11111','22222','33333'],//默认div内容
+        events:'click',//默认事件
+        Hw:50,//默认卡头的宽
+        Hh:30,//默认卡头的高
+        Hbtrr:0,//默认卡头右上角圆角度数
+        Hbtlr:0,//默认卡头左上角圆角度数
+        Hbblr:0,//默认卡头右下角圆角度数
+        Hbblr:0,//默认卡头左下角圆角度数
+
+        dw:280,//默认卡身宽度你
+        dh:270,//默认卡身高度
+        dbtrr:0,//默认卡身右上角圆角度数
+        dbtlr:0,//默认卡身左上角圆角度数
+        dbbrr:0,//默认卡身右下角圆角度数
+        dbblr:0//默认卡身左下角圆角度数
+    };
+    var settings = {}//设置信息
+    var $parent = null; //设置父级元素
+    function fnTab(options){//options配置信息形参
+        $parent = this;
+        settings = $.extend(settings,defaults,options);//设置,默认,配置 有配置走配置,没配置走默认
+        create(settings.Hw,settings.Hh,settings.Hbtrr,settings.Hbtlr,settings.Hbbrr,settings.Hbblr,
+            settings.dw,settings.dh,settings.dbtrr,settings.dbtlr,settings.dbbrr,settings.dbblr
+        );//调用创建函数
+        bind();
+    }
+
+    function create(Hw,Hh,Hbtrr,Hbtlr,Hbbrr,Hbblr,dw,dh,dbtrr,dbtlr,dbbrr,dbblr){//创建
+        var $Ol = $('<ol></ol>');
+        var $Ul = $('<ul></ul>');
+        for (var i = 0; i < settings.heads.length; i++) {
+            var $head = $('<li>'+settings.heads[i]+'</li>');
+            $head.css({
+                width: Hw,
+                height:Hh,
+                borderTopRightRadius:Hbtrr,
+                borderTopLeftRadius:Hbtlr,
+                borderBottomRightRadius:Hbbrr,
+                borderBottomLeftRadius:Hbblr
+            });
+            if (i==0) {
+                $head.attr('class','active');
+            }
+            $Ol.append($head);
+            $parent.append($Ol);
+        }
+
+        for(var i=0;i<settings.bodys.length;i++){
+            var $div = $('<li>'+settings.bodys[i]+'</li>');
+            $div.css({
+                width: dw,
+                height:dh,
+                borderTopRightRadius:dbtrr,
+                borderTopLeftRadius:dbtlr,
+                borderBottomRightRadius:dbbrr,
+                borderBottomLeftRadius:dbblr
+            });
+            if (i==0) {
+                $div.attr('class','cur');
+            }
+            $Ul.append($div);
+            $parent.append($Ul);
+        }
+    }
+
+    function bind(){//添加操作行为
+        $parent.find('ol li').on(settings.events,function(){
+            $parent.find('ol li').attr('class','');
+            $(this).attr('class','active');
+            $parent.find('ul li').attr('class','');
+            $parent.find('ul li').eq($(this).index()).attr('class','cur');
+        });
+    }
+
+    $.fn.extend({//提供外部接口
+        tabs : fnTab
+    });
+})(jQuery);
+</script>
+
+//插件调用方法
+<script>
+$(function(){
+    $('#tab').tabs({
+        heads:['体育','娱乐','新闻'],//设置卡头
+        bodys:['体育11111','娱乐121212','新闻fffff'],//设置卡体
+        events:'mouseover',//设置事件
+        Hw:50,//设置卡头的宽 可以不设置,默认为50px
+        Hh:30,//设置卡头的高 可以不设置,默认为30xp
+        Hbtrr:0,//设置卡头右上角圆角度数 可以不设置,默认为 0
+        Hbtlr:0,//设置卡头左上角圆角度数 可以不设置,默认为 0
+        Hbblr:0,//设置卡头右下角圆角度数 可以不设置,默认为 0
+        Hbblr:0,//设置卡头左下角圆角度数 可以不设置,默认为 0
+
+        dw:280,//设置卡身宽度 可以不设置,默认为 280
+        dh:270,//设置卡身高度 可以不设置,默认为 270
+        dbtrr:0,//设置卡身右上角圆角度数 可以不设置,默认为 0
+        dbtlr:0,//设置卡身左上角圆角度数 可以不设置,默认为 0
+        dbbrr:0,//设置卡身右下角圆角度数 可以不设置,默认为 0
+        dbblr:0//设置卡身左下角圆角度数 可以不设置,默认为 0
+    });
+});
+</script>

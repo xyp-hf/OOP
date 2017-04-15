@@ -1,0 +1,91 @@
+HTML5本地存储
+sessionStorage //数据随着浏览器的关闭而销毁。
+localStorage//不主动删除,永远不会销毁
+
+
+sessionStorage的常见用法
+ <script type="text/JavaScript">
+ //设置存储,用途:将value存储到key字段,用法sessionStorage.setItem(key,value);
+ sessionStorage.setItem("name","和派孔明");
+ sessionStorage.setItem("age",18);
+ sessionStorage.setItem("address","陆家嘴金融城");
+
+ //删除储存,用法:删除指定key本地存储的值,用法sessionStorage.removeItem(key);
+ sessionStorage.removeItem("age");
+
+ /*
+ 清除储存,用途:清除所有的key/value,用法:sessionStorage.clear();
+ sessionStorage.clear();
+ */
+
+ //获取储存,用途：获取指定key本地存储的值,用法:sessionStorage.getItem(key)
+ var thisName = sessionStorage.getItem("name");
+ var thisAge = sessionStorage.getItem("age");
+ var thisaddress = sessionStorage.getItem("address");
+
+alert(thisName);
+alert(thisAge);
+alert(thisaddress);
+ </script>
+
+
+localStorage的常见用法
+ <script type="text/javascript">
+  //设置存储,用途:将value存储到key字段,用法sessionStorage.setItem(key,value);
+  localStorage.setItem("name","和派孔明");
+  localStorage.setItem("age",18);
+  localStorage.setItem("address","陆家嘴金融城");
+
+  //删除储存,用法:删除指定key本地存储的值,用法sessionStorage.removeItem(key);
+  localStorage.removeItem("age");
+
+  /* 
+  //清除储存,用途:清除所有的key/value,用法:localStorage.clear();
+  localStorage.clear();
+  */
+
+  //获取储存,用途：获取指定key本地存储的值,用法:sessionStorage.getItem(key)
+  var thisName = localStorage.getItem("name");
+  var thisAge = localStorage.getItem("age");
+  var thisaddress = localStorage.getItem("address");
+
+alert(thisName);
+alert(thisAge);
+alert(thisaddress);
+ </script>
+
+
+web Storage不仅可以用自身的setItem,getItem等方便存取，
+也可以像普通对象一样用点(.)操作符或者[]的方式进行数据存储，如下案例：
+ <script type="text/javascript">
+var storage = window.localStorage; 
+storage.name = "和派孔明"; 
+storage["Age"] = "18"; 
+alert(storage.name);
+alert(storage["Age"]);
+  </script>
+
+
+localStorage和sessionStorage的key和length属性实现遍历
+sessionStorage和localStorage提供的key()和length可以方便的实现存储的数据遍历，例如下面的代码：
+ <script type="text/javascript">
+var storage = window.localStorage; 
+for (var i=0,len=storage.length;i<len;i++){
+var key = storage.key(i);
+var value = storage.getItem(key);
+console.log(key + "=" + value); 
+}
+</script>
+
+
+storage还提供了storage事件，当键值改变或者clear的时候，就可以触发storage事件，如下面的代码就添加了一个storage事件改变的监听： 
+<script type="text/javascript">
+if(window.addEventListener){ 
+window.addEventListener("storage",handle_storage,false);
+}else if(window.attachEvent){
+window.attachEvent("onstorage",handle_storage);
+} 
+function handle_storage(e){ 
+if(!e){e=window.event;}
+}
+</script>

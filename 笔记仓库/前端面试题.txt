@@ -1,0 +1,288 @@
+前端面试题
+
+HTML&CSS
+1、常用哪几种浏览器？有哪些内核？
+浏览器：IE、Chrome、FireFox、SaFari、Opera
+内核：Trident，Gecko，Presto、webkit
+
+2、清除浮动有哪些方式？比较好的方式是哪一种？
+（1）父级div定义height。
+（2）结尾处加空div标签clear:both。
+（3）父级div定义伪类:after和zoom。
+（4）父级div定义overflow:hidden。
+（5）父级div定义overflow:auto。
+（6）父级div也浮动，需要定义宽度。
+（7）父级div定义display:table。
+（8）结尾处加br标签clear:both。
+
+3、Doctype作用？标准模式与兼容模式各有什么区别?
+(Q1)<!DOCTYPE>告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
+(Q2)标准模式的排版和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
+
+HTML5 为什么只需要写 <!DOCTYPE HTML>？
+HTML5不基于 SGML，因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为（让浏览器按照它们应该的方式来运行）。
+而HTML4.01基于SGML,所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。
+
+4、介绍一下你对浏览器内核的理解？
+主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎。
+渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核。
+JS引擎则：解析和执行javascript来实现网页的动态效果。
+最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎。
+
+JavaScript
+1.介绍js的基本数据类型
+Undefined、Null、Boolean、Number、String
+2.js有哪些内置对象？
+数据封装类对象：Object、Array、Boolean、Number 和 String
+其他对象：Function、Arguments、Math、Date、RegExp、Error
+
+3、null和undefined的区别？
+null是一个表示"无"的对象，转为数值时为0；undefined是一个表示"无"的原始值，转为数值时为NaN。
+undefined：
+（1）变量被声明了，但没有赋值时，就等于undefined。
+（2) 调用函数时，应该提供的参数没有提供，该参数等于undefined。
+（3）对象没有赋值的属性，该属性的值为undefined。
+（4）函数没有返回值时，默认返回undefined。
+null：
+（1） 作为函数的参数，表示该函数的参数不是对象。
+（2） 作为对象原型链的终点。
+
+4、行内元素有哪些?块级元素有哪些?CSS的盒模型?
+块级元素：div p h1 h2 h3 h4 form ul
+行内元素: a b br i span input select
+Css盒模型:内容，border ,margin，padding
+
+5、写出几种IE6 BUG的解决方法
+1.双边距BUG float引起的 使用display
+2.3像素问题 使用float引起的 使用dislpay:inline -3px
+3.超链接hover 点击后失效 使用正确的书写顺序 link visited hover active
+4.Ie z-index问题 给父级添加position:relative
+5.Png 透明 使用js代码 改
+6.Min-height 最小高度 ！Important 解决’
+7.select 在ie6下遮盖 使用iframe嵌套
+8.为什么没有办法定义1px左右的宽度容器（IE6默认的行高造成的，使用over:hidden,zoom:0.08 line-height:1px）
+
+9、说明事件委托
+
+10、原型继承如何运作
+
+11、4.div+css的布局较table布局有什么优点？
+
+改版的时候更方便 只要改css文件。
+页面加载速度更快、结构化清晰、页面显示简洁。
+表现与结构相分离。
+易于优化（seo）搜索引擎更友好，排名更容易靠前。
+
+12、为什么利用多个域名来存储网站资源会更有效？
+CDN缓存更方便 
+突破浏览器并发限制 
+节约cookie带宽 
+节约主域名的连接数，优化页面响应速度 
+防止不必要的安全问题
+
+13、请描述一下cookies，sessionStorage和localStorage的区别？
+sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。而localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+web storage和cookie的区别
+Web Storage的概念和cookie相似，区别是它是为了更大容量存储设计的。Cookie的大小是受限的，并且每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽，另外cookie还需要指定作用域，不可以跨域调用。
+除此之外，Web Storage拥有setItem,getItem,removeItem,clear等方法，不像cookie需要前端开发者自己封装setCookie，getCookie。但是Cookie也是不可以或缺的：Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生。
+
+14、你如何理解HTML结构的语义化？　
+1，去掉或者丢失样式的时候能够让页面呈现出清晰的结构
+2，有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；
+3，方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；
+4，便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。
+
+15、谈谈以前端角度出发做好SEO需要考虑什么？
+合理的title、description、keywords：搜索对着三项的权重逐个减小，title值强调重点即可，重要关键词出现不要超过2次，而且要靠前，不同页面title要有所不同；description把页面内容高度概括，长度合适，不可过分堆砌关键词，不同页面description有所不同；keywords列举出重要关键词即可
+语义化的HTML代码，符合W3C规范：语义化代码让搜索引擎容易理解网页
+重要内容HTML代码放在最前：搜索引擎抓取HTML顺序是从上到下，有的搜索引擎对抓取长度有限制，保证重要内容一定会被抓取
+重要内容不要用js输出：爬虫不会执行js获取内容
+少用iframe：搜索引擎不会抓取iframe中的内容
+非装饰性图片必须加alt
+提高网站速度：网站速度是搜索引擎排序的一个重要指标
+
+16、display:none与visibility:hidden的区别是什么？
+display : 隐藏对应的元素但不挤占该元素原来的空间。
+visibility: 隐藏对应的元素并且挤占该元素原来的空间。
+
+17、Javascript的事件流模型都有什么？
+“事件冒泡”：事件开始由最具体的元素接受，然后逐级向上传播
+“事件捕捉”：事件由最不具体的节点先接收，然后逐级向下，一直到最具体的
+“DOM事件流”：三个阶段：事件捕捉，目标阶段，事件冒泡
+
+18、如何进行网站性能优化
+content方面
+减少HTTP请求：合并文件、CSS精灵、inline Image
+减少DNS查询：DNS查询完成之前浏览器不能从这个主机下载任何任何文件。方法：DNS缓存、将资源分布到恰当数量的主机名，平衡并行下载和DNS查询
+避免重定向：多余的中间访问
+使Ajax可缓存
+非必须组件延迟加载
+未来所需组件预加载
+减少DOM元素数量
+将资源放到不同的域下：浏览器同时从一个域下载资源的数目有限，增加域可以提高并行下载量
+减少iframe数量
+不要404
+Server方面
+
+使用CDN
+添加Expires或者Cache-Control响应头
+对组件使用Gzip压缩
+配置ETag
+Flush Buffer Early
+Ajax使用GET进行请求
+避免空src的img标签
+
+Cookie方面
+减小cookie大小
+引入资源的域名不要包含cookie
+
+css方面
+将样式表放到页面顶部
+不使用CSS表达式
+使用不使用@import
+不使用IE的Filter
+
+Javascript方面
+将脚本放到页面底部
+将javascript和css从外部引入
+压缩javascript和css
+删除不需要的脚本
+减少DOM访问
+合理设计事件监听器
+
+图片方面
+优化图片：根据实际颜色需要选择色深、压缩
+优化css精灵
+不要在HTML中拉伸图片
+保证favicon.ico小并且可缓存
+
+移动方面
+保证组件小于25k
+Pack Components into a Multipart Document
+
+
+19、HTML&CSS：  对Web标准的理解、浏览器内核差异、兼容性、hack、CSS基本功：布局、盒子模型、选择器优先级及使用、HTML5、CSS3、移动端适应。
+JavaScript：   数据类型、面向对象、继承、闭包、插件、作用域、跨域、原型链、模块化、自定义事件、内存泄漏、事件机制、异步装载回调、模板引擎、Nodejs、JSON、ajax等。
+其他：  HTTP、安全、正则、优化、重构、响应式、移动端、团队协作、可维护、SEO、UED、架构、职业生涯 
+
+20、介绍一下CSS的盒子模型？
+1）有两种， IE 盒子模型、标准 W3C 盒子模型；IE的content部分包含了 border 和 pading;
+2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border).
+
+21、CSS3有哪些新特性？
+
+CSS3实现圆角（border-radius），阴影（box-shadow），
+对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+增加了更多的CSS选择器  多背景 rgba 
+在CSS3中唯一引入的伪元素是::selection.
+媒体查询，多栏布局
+border-image
+
+22、常见兼容性问题？
+
+* png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
+
+* 浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+
+* IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。 
+
+* 浮动ie产生的双倍距离（IE6双边距问题：在IE6下，如果对元素设置了浮动，同时又设置了margin-left或margin-right，margin值会加倍。）
+  #box{ float:left; width:10px; margin:0 0 0 100px;} 
+
+ 这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——_display:inline;将其转化为行内属性。(_这个符号只有ie6会识别)
+
+*  渐进识别的方式，从总体中逐渐排除局部。 
+
+  首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。 
+  接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
+
+  css
+      .bb{
+       background-color:#f1ee18;/*所有识别*/
+      .background-color:#00deff\9; /*IE6、7、8识别*/
+      +background-color:#a200ff;/*IE6、7识别*/
+      _background-color:#1e0bd1;/*IE6识别*/ 
+      } 
+
+*  IE下,可以使用获取常规属性的方法来获取自定义属性,
+   也可以使用getAttribute()获取自定义属性;
+   Firefox下,只能使用getAttribute()获取自定义属性. 
+   解决方法:统一通过getAttribute()获取自定义属性.
+
+* IE下,event对象有x,y属性,但是没有pageX,pageY属性; 
+  Firefox下,event对象有pageX,pageY属性,但是没有x,y属性.
+
+* 解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。
+
+* Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示, 
+  可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决.
+
+* 超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:
+L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}
+
+* 怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在可以使用[html5](http://www.w3.org/TR/html5/single-page.html)推荐的写法：`<doctype html>`
+
+* 上下margin重合问题
+ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
+解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
+* ie6对png图片格式支持不好(引用一段脚本处理)
+
+23、说说你对闭包的理解
+使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，会增大内存使用量，使用不当很容易造成内存泄露。
+1.函数嵌套函数 2.函数内部可以引用外部的参数和变量 3.参数和变量不会被垃圾回收机制回收
+
+24、请你谈谈Cookie的弊端
+cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 第一：每个特定的域名下最多生成20个cookie
+1.IE6或更低版本最多20个cookie
+2.IE7和之后的版本最后可以有50个cookie。
+3.Firefox最多50个cookie
+4.chrome和Safari没有做硬性限制
+
+25、CSS3有哪些新特性？ ###CSS3 What's new?
+CSS3实现圆角（border-radius），阴影（box-shadow），
+对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
+增加了更多的CSS选择器  多背景 rgba 
+在CSS3中唯一引入的伪元素是::selection.
+媒体查询，多栏布局
+border-image
+
+26、事件、IE与火狐的事件机制有什么区别？ 如何阻止冒泡？
+1. 我们在网页中的某个操作（有的操作对应多个事件）。例如：当我们点击一个按钮就会产生一个事件。是可以被 JavaScript 侦测到的行为。  
+2. 事件处理机制：IE是事件冒泡、firefox同时支持两种事件模型，也就是：捕获型事件和冒泡型事件。；
+3.  ev.stopPropagation();注意旧ie的方法 ev.cancelBubble = true;
+
+
+27、ajax 是什么?ajax 的交互模型?同步和异步的区别?如何解决跨域问题?
+
+28、js对象的深度克隆
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

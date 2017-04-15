@@ -1,0 +1,24 @@
+IE兼容性问题
+1、IE6不支持min-height，解决办法使用css hack：
+2、ol内li的序号全为1，不递增。解决方法：为li设置样式display: list-item;
+3、未定位父元素overflow: auto;，包含position: relative;子元素，子元素高于父元素时会溢出。解决办法：1）子元素去掉position: relative;; 2）不能为子元素去掉定位时，父元素position: relative;
+4、IE6只支持a标签的:hover伪类，解决方法：使用js为元素监听mouseenter，mouseleave事件，添加类实现效果：
+5、IE5-8不支持opacity，解决办法：
+filter: alpha(opacity=60); /* for IE5-7 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)"; /* for IE 8*/
+6、IE6在设置height小于font-size时高度值为font-size，解决办法：font-size: 0;
+7、IE6不支持PNG透明背景，解决办法: IE6下使用gif图片
+8、IE6-7不支持display: inline-block解决办法：设置inline并触发hasLayout
+9、IE6-7不支持display: inline-block解决办法：设置inline并触发hasLayout
+10、IE6下浮动元素在浮动方向上与父元素边界接触元素的外边距会加倍。解决办法： 1）使用padding控制间距。 2）浮动元素display: inline;这样解决问题且无任何副作用：css标准规定浮动元素display:inline会自动调整为block
+11、通过为块级元素设置宽度和左右margin为auto时，IE6不能实现水平居中，解决方法：为父元素设置text-align: center;
+
+
+Js 方面
+1、IE支持currentStyle，FIrefox使用getComputStyle
+2、IE 使用innerText，Firefox使用textContent
+3、滤镜方面：IE:filter:alpha(opacity= num)；Firefox：-moz-opacity:num
+4、事件方面：IE：attachEvent：火狐是addEventListener
+5、鼠标位置：IE是event.clientX；火狐是event.pageX
+6、IE使用event.srcElement；Firefox使用event.target
+7、IE中消除list的原点仅需margin:0即可达到最终效果；FIrefox需要设置margin:0;padding:0以及list-style:none

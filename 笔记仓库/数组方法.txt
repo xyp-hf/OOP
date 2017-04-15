@@ -1,0 +1,155 @@
+头部添加 unshift
+var arr=[12,5,'bmw']；
+var tmp = arr.unshift('qq');
+document.write(tmp); //返回数组长度
+-----------------------------------------------------------------------------
+头部剔除 shift
+var arr=[12,5,'bmw5']
+var tmp = arr.shift();
+document.write(tmp); //返回剔除元素
+-----------------------------------------------------------------------------
+尾部添加 push
+var arr=[12,5,'bmw']
+arr.push('qq',110);
+document.write(arr); //返回数组
+-----------------------------------------------------------------------------
+尾部剔除 pop
+var arr=[12,5,'bmw5']
+var tmp = arr.pop();
+document.write(tmp); //返回剔除的元素
+-----------------------------------------------------------------------------
+中间添加，插入，删除 splice
+var arr=[12,'999','bmw','volo']
+arr.splice(开始位置，要删除几个，要插入个数)
+var tmp = arr.splice(1,1,'qq');//替换 将第1个位置的元素替换为'qq'[将第一个元素删掉，并且插入qq，注：数组是从0开始数的]
+var tmp = arr.splice(1,0,'qq'); //在第一个位置插入'qq'[不删除元素，在第一个位置插入'qq']
+document.write(arr);
+alert(tmp);
+--------------------------------
+splice 其他用法
+//arr.splice(arr.length,0,'qq') //=>push
+//arr.splice(arr.length-1,1) //=>pop
+//arr.splice(0,0,'qq'); //=>unshift
+arr.splice(0,1) //=>shift
+
+-----------------------------------------------------------------------------
+删除偶数 方法一：
+var arr=[2,2,2,3,7,4,4]; //删除偶数
+for(var i=0;i<arr.length;i++){
+if(arr[i]%2==0){
+arr.splice(i,1)
+i--;
+}
+}
+document.write(arr);
+-----------------------------------------------------------------------------
+var arr=[2,2,2,3,7,4,4]; //删除奇数
+for(var i=0;i<arr.length;i++){
+if(arr[i]%2==1){
+arr.splice(i--,1);
+
+}
+}
+document.write(arr);
+-----------------------------------------------------------------------------
+数组排序 sort
+从小到大
+var arr=[112,21,451,45]; //从小到大
+arr.sort(function(n1,n2){return n1-n2});
+document.write(arr);
+//结果：21,45,112,451
+--------------------------------
+从大到小
+var arr=[112,21,451,45]; //从大到小
+arr.sort(function(n1,n2){return n2-n1});
+document.write(arr);
+//结果：451,112,45,21
+-----------------------------------------------------------------------------
+反转数组 reverse
+var arr=['i','love','you'];
+//arr.reverse();
+var tmp = arr.reverse();
+document.write(arr=tmp);
+--------------------------------
+手动反转数组：方法一
+var arr=['i','love','you'];
+//1 pop -->  push
+var arr2=[];
+var len=arr.length;
+for(var i=0;i<len;i++){
+arr2.push(arr.pop());
+
+}
+document.write(arr2);
+-----------------------------------------------------------------------------
+数组链接 concat
+var arr=[12,5,'bmw'];
+var arr2=['a','b','c'];
+var tmp = arr.concat(arr2)
+alert(tmp);
+-----------------------------------------------------------------------------
+数组去重复
+方法一：
+var str='春新品 韩版 春新品 连衣裙 春新品 韩版 打底衫 连衣裙 裤子 连衣裙 连衣裙';
+var arr=str.split(' ');
+var arr2=[];
+for (var i = 0; i < arr.length; i++) {
+var find=false;
+for (var j = 0; j < arr2.length; j++) {
+if (arr2[j]==arr[i]) {
+find=true;
+break;
+}else{
+find=false;
+}
+}
+if (!find) {
+arr2.push(arr[i]);
+}
+}
+document.write(arr2);
+--------------------------------
+方法二：
+var str='春新品 韩版 春新品 连衣裙 春新品 韩版 打底衫 连衣裙 裤子 连衣裙 连衣裙';
+var arr=str.split(' ');
+var arr2=[];
+for (var i = 0; i < arr.length; i++) {
+find=false;
+for (var j = 0; j < arr2.length; j++) {
+if (arr2[j]==arr[i]) {
+find=true;
+}
+}
+if (!find) {
+arr2.push(arr[i]);
+}
+}
+document.write(arr2);
+--------------------------------
+方法三：
+var str='春新品 韩版 春新品 连衣裙 春新品 韩版 打底衫 连衣裙 裤子 连衣裙 春新品 连衣裙';
+var arr=str.split(' ');
+for (var i = 0; i < arr.length; i++) {
+for (var j = i+1; j < arr.length; j++) {
+if (arr[i]==arr[j]) {
+arr.splice(j,1);
+j--;
+}
+}
+}
+document.write(arr);
+--------------------------------
+方法四：
+var str='春新品 韩版 春新品 连衣裙 春新品 韩版 打底衫 连衣裙 裤子 连衣裙 春新品 连衣裙';
+var arr=str.split(' ');
+
+
+for (var i = 0; i < arr.length; i++) {
+for (var j = i+1; j < arr.length; j++) {
+if (arr[i]==arr[j]) {
+arr.splice(j,1);
+j--;
+}
+} 
+}
+document.write(arr);

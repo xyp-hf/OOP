@@ -1,0 +1,183 @@
+1、指定一个angularJS程序
+ng-app="angularJS程序名称"
+
+2、定义一个控制器
+ng-controller="控制器名称"
+
+3、angularJS定义模块
+var 模块名 = angular.module('angularJS程序名称',[]);
+
+4、angularJS控制器
+模块名 = controller('控制器名称',function($scope){
+	$scope.arr=[12,5,8,9,10,6,1,2];
+});
+
+5、遍历
+var app = angular.module("my_app",[]);
+app.controller("test",function($scope){
+	$scope.arr=[12,5,8,9,10,6,1,2];
+});
+
+<body ng-controller="test">
+	<ul>
+		<li ng-repeat="i in arr">{{i}}</li>
+	</ul>
+</body>
+
+5、向数组中添加元素
+arr.push(99);
+
+6、点击累加
+ng-click="a=a+1"
+
+7、数组套json
+<body ng-controller="aaa">
+<ul>
+   <li ng-repeat="item in arr">我叫{{item.name}},今年{{item.age}}<li>
+</ul>
+</body>
+
+8、执行
+<script type="text/javascript">
+//定义模块
+var app=angular.module('test',[]);
+//控制器
+app.controller('aaa',function($scope){
+	$scope.a=12;
+	$scope.b=0;
+
+	//谁，执行
+	$scope.$watch('a',function(){
+		$scope.b = $scope.a*2;
+	})
+})
+</script>
+<body ng-controller="aaa">
+	<input type="text" ng-model="a">
+	{{b}}
+</body>
+
+9、关于model
+<p ng-init="name=blue";age=18;">
+	<input type="text" value="" ng-model="name" />
+	<input type="text" value="" ng-model="age" /><br>
+我叫:{{name}},今年{{age}}岁
+
+</p>
+
+10、单选框、布尔值应用
+<body>
+<input type="checkbox" ng-model="aaa" /><br>
+<div id="div1" ng-show="aaa"></div>
+</body>
+
+11、下来选项
+<p>
+<select ng-model="city">
+<option value="1">北京</option>
+<option value="1">北京</option>
+<option value="1">北京</option>
+</select>
+</p>
+
+12、模板计算
+var app=angular.module('test',[]);
+app.controller('aaa',function($scope){
+	$scope.a=12;
+	$scope.b=5;
+
+	$scope.sum=function(){
+		return $scope.a+$scope.b;
+	}
+})
+<body ng-controller="aaa">
+	<input type="number" ng-model="a" />
+	<input type="number" ng-model="b" />
+{{a}}、{{b}}、{{a*b}}<br>
+{{sum()}}
+</body>
+
+13、指令
+var app=angular.module('my_app', []);
+app.directive('red', function (){
+	return function (scope, element, attr){
+		//element——JQ对象
+		element.css('background', 'red');
+	};
+});
+
+14、指令隔行换色
+	var app=angular.module('my_app', []);
+	app.directive('changeColor',function(){
+		return function (scope, element, attr){
+				var arr=element.children();
+				
+				for(var i=0;i<arr.length;i++)
+				{
+					arr[i].style.background=i%2?'#CCC':'';
+				}
+			};
+	});
+
+15、双向数据绑定
+<body>
+	<p>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" /><br>
+		<input type="text" value="" ng-model="name" />
+	</p>
+</body>
+
+
+16、ajax
+var app = angular.module("index",[]);
+app.controller("ajax",function($scope,$http){
+	$scope.arr = []; 
+	//$http.get/post/jsonp(url,{params:{data}}).success(fn).error(fn);	
+	$http.get("a.txt",{params:{}}).success(function(arr){
+		//alert(typeof arr);//obj
+		//alert("成功" + arr);		
+		$scope.arr = arr;
+	}).error(function(){
+		alert("失败");
+	});		
+		
+
+});
+
+<body ng-controller="ajax">
+<ul>
+	<li ng-repeat="item in arr">{{item}}</li>
+</ul>
+</body>
+
+17、jsonp
+var app = angular.module("index",[]);
+app.controller("jsonp",function($scope,$http){
+	 $scope.wd = "";
+	 $scope.arr = [];
+	 var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su";
+	 $scope.show = function(){
+		//发送jsonp请求
+		
+		$http.jsonp(url,{params:{wd:$scope.wd,cb:"JSON_CALLBACK"}})
+		.success(function(json){
+			//alert("成功" + JSON.stringify(json));
+			$scope.arr = json.s;	
+		}).error(function(){
+			alert("失败");	
+		}); 	 
+	 };
+});
+<body ng-controller="jsonp">
+<input ng-model="wd" type="text" value="" ng-keyup="show();" />
+<ul>
+	<li ng-repeat="item in arr">{{item}}</li>
+</ul>
+</body>
+
+

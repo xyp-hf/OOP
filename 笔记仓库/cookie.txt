@@ -1,0 +1,39 @@
+1.首先包含jQuery的库文件，在后面包含 jquery.cookie.js 的库文件。
+<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js" type="text/javascript"></script>
+
+
+2.使用方法：
+创建一个cookie并设置有效时间为 7天;
+$.cookie('name', 'value', { expires: timeout });
+注意：如果不设置 cookie有效时间，所创建的cookie有效期默认到用户关闭浏览器为止，所以被称为 “会话cookie（session cookie）”。如：$.cookie('the_cookie', 'the_value');
+
+
+3.读取cookie:
+$.cookie('name'); // cookie存在 => 'the_value' 
+$.cookie('age'); // cookie不存在 => null
+
+
+4.删除cookie，通过传递null作为cookie的值即可： 
+$.cookie('name', null);
+
+jQuery.cookie相关配置参数介绍，如：
+$.cookie('user',
+'和派孔明',
+{
+expires:3,
+//数字单位为“天”,如果省略，那么创建的cookie是会话cookie，将在用户退出浏览器时被删除。
+
+path: '/',
+//定义cookie的有效路径。默认情况下， 该参数的值为创建 cookie 的网页所在路径（标准浏览器的行为）。
+   //如果你想在整个网站中访问这个cookie需要这样设置有效路径：path: '/'。
+   //如果你想删除一个定义 了有效路径的 cookie，你需要在调用函数时包含这个路径:
+   //$.cookie('the_cookie', null, {path: '/' });。 domain: 'example.com' </span>
+
+secure: true,
+//默认值：false。如果为true，cookie的传输需要使用安全协议（HTTPS）。 
+
+raw: true
+//默认情况下，读取和写入 cookie 的时候自动进行编码和解码（使用encodeURIComponent 编码，
+   // decodeURIComponent 解码）。要关闭这个功能设置 raw: true 即可。
+}

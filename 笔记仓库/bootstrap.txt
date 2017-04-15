@@ -1,0 +1,201 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/bootstrap.js"></script>
+
+class="container-fluid" 流布局
+container 布局
+
+行 class="row"
+列
+class="col-lg-1"
+class="col-md-1"
+class="col-sm-1"
+class="col-xs-1"
+
+文字标签外
+class="caption"
+
+偏移
+class="col-lg-offset-4"
+
+col-lg-push
+col-lg-pull
+
+清楚浮动
+<div class="clearfix"></div>
+
+显示隐藏
+<div class="container-fluid">
+	<div class="row">
+		<div class="tips1 visible-lg-block affix"></div>
+        <div class="tips2 hidden-lg affix"></div>
+    </div>
+    <div>aaaaaaaaaa</div>
+</div>
+
+字体符号
+<body style="height:2000px;">
+<div class="container">	
+    <div class="row">
+        <div class="glyphicon glyphicon-share-alt" style="font-size:40px; color:red;"></div>aaaaaaaaaaaa
+    </div>
+</div>
+</body>
+
+按钮
+class="btn btn-primary"
+class="btn btn-success"
+class="btn btn-info"
+class="btn btn-warning"
+class="btn btn-danger"
+
+文字背景
+    <p class="bg-primary">首选项</p>
+    <p class="bg-success">成功</p>
+    <p class="bg-info">一般信息</p>
+    <p class="bg-warning">警告</p>
+    <p class="bg-danger">危险</p>
+
+文字颜色
+    <span class="text-primary">首选项</span>
+    <span class="text-success">首选项</span>
+    <span class="text-info">首选项</span>
+    <span class="text-warning">首选项</span>
+    <span class="text-danger">首选项</span>
+
+链接
+    <span class="text-primary">首选项</span>
+    <span class="text-success">首选项</span>
+    <span class="text-info">首选项</span>
+    <span class="text-warning">首选项</span>
+    <span class="text-danger">首选项</span>
+
+链接按钮
+    <a href="#" class="btn btn-primary">连接1</a>
+    <a href="#" class="bg-success">连接2</a>
+    <a href="#" class="text-danger">连接3</a>
+警告框
+    <div class="alert alert-warning">我是警告框</div>
+    <div class="alert alert-danger">我是危险信息</div>
+
+
+组
+form-group
+
+下拉框
+class="dropdown open">
+箭头符号
+class="caret"
+
+class="dropdown-menu"
+
+鼠标移上
+<script>
+if( window.navigator.userAgent.toLowerCase().indexOf('mobile')==-1){
+	var timer = null;
+	$('.dropdown-toggle').hover(function(){
+		clearTimeout(timer);
+		$('.dropdown').addClass('open');
+	},function(){
+		timer = setTimeout(function(){
+			$('.dropdown').removeClass('open');
+		},100);
+	});
+	$('.dropdown-menu').hover(function(){
+		clearTimeout(timer);
+	},function(){
+		timer = setTimeout(function(){
+			$('.dropdown').removeClass('open');
+		},100);
+	});
+}
+
+选项卡
+<body style="height:2000px;">
+<div class="container">
+	<br><br>
+    <ul class="nav nav-tabs">
+    	<li class="active"><a href="#a" data-toggle="tab">one</a></li>
+        <li><a href="#b" data-toggle="tab">two</a></li>
+        <li><a href="#c" data-toggle="tab">three</a></li>
+    </ul>
+    <ul class="tab-content">
+    	<li id="a" class="tab-pane active">aaaaaaaaaa</li>
+        <li id="b" class="tab-pane">bbbbbbbbbb</li>
+        <li id="c" class="tab-pane">cccccccccc</li>
+    </ul>
+    <br><br>
+    <div style="width:400px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#a1" data-toggle="tab">one</a></li>
+            <li><a href="#b1" data-toggle="tab">two</a></li>
+            <li><a href="#c1" data-toggle="tab">three</a></li>
+        </ul>
+        <ul class="tab-content">
+            <li id="a1" class="tab-pane active">aaaaaaaaaa</li>
+            <li id="b1" class="tab-pane">bbbbbbbbbb</li>
+            <li id="c1" class="tab-pane">cccccccccc</li>
+        </ul>
+    </div>
+    <br><br>
+    <div style="width:400px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#a2" data-toggle="tab">one</a></li>
+            <li><a href="#b2" data-toggle="tab">two</a></li>
+            <li><a href="#c2" data-toggle="tab">three</a></li>
+        </ul>
+        <ul class="tab-content">
+            <li id="a2" class="tab-pane fade in active">aaaaaaaaaa</li>
+            <li id="b2" class="tab-pane fade">bbbbbbbbbb</li>
+            <li id="c2" class="tab-pane fade">cccccccccc</li>
+        </ul>
+    </div>
+    <br><br>
+    <div style="width:400px;">
+        <ul id="myTabs" class="nav nav-tabs">
+            <li class="active"><a href="#a3" data-toggle="tab">one</a></li>
+            <li><a href="#b3" data-toggle="tab">two</a></li>
+            <li><a href="#c3" data-toggle="tab">three</a></li>
+        </ul>
+        <ul class="tab-content">
+            <li id="a3" class="tab-pane active">aaaaaaaaaa</li>
+            <li id="b3" class="tab-pane">bbbbbbbbbb</li>
+            <li id="c3" class="tab-pane">cccccccccc</li>
+        </ul>
+    </div>
+    <br><br>
+    <div style="width:400px;">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#a4" data-toggle="tab">one</a></li>
+            <li><a href="#b4" data-toggle="tab">two</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">three <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#c4" data-toggle="tab">child1</a></li>
+                    <li><a href="#d4" data-toggle="tab">child2</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="tab-content">
+            <li id="a4" class="tab-pane active">aaaaaaaaaa</li>
+            <li id="b4" class="tab-pane">bbbbbbbbbb</li>
+            <li id="c4" class="tab-pane">cccccccccc</li>
+            <li id="d4" class="tab-pane">dddddddddd</li>
+        </ul>
+    </div>
+</div>
+</body>
+<script>
+
+//配置 方法 自定义事件
+$('#myTabs a').mouseover(function(){
+	$(this).tab('show');
+});
+</script>
+
+
+
+
+
+

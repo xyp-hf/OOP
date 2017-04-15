@@ -1,0 +1,252 @@
+angularjs防止压缩报错
+
+依赖注入
+https://my.zhaopin.com/attach/2017/04/01/6029d894-e349-46a8-bb11-ca36bd86e762.pdf
+service服务
+$内部
+$scope 
+- $apply
+- $watch
+
+$rootScope
+$http
+$timeout
+$filter
+
+服务
+function Aaa($scope,$http){
+	$http({
+		method:'GET',
+		url:'http://miaov.com/angular',
+		params:{'name':hello}
+	}).success(function(data){
+	   return data;
+	})
+}
+
+directive指令
+ng内部
+ng-app
+ng-controller
+ng-repeat
+ng-click
+
+双向数据绑定
+ng-model
+
+function Aaa($scope,$timeout){
+	$scope.name = 'hello';
+	$timeout(function(){
+		$scope.name = 'hi';
+	},2000);
+}
+
+
+function Aaa($scope,$timeout){
+	$scope.name = 'hello';
+		$scope.$apply(function(){
+		        $scope.name = 'hi';
+	});
+}
+
+
+$applay动态修改视图
+
+module模块化
+
+var m1 = angular.module('myApp',[]);/初始化模块对象 数组里面写依赖
+m1.controller('Aaa',function($scope){
+	$scope.name = 'hello angular';
+
+});
+
+m1.controller('Bbb',function($scope){
+	$scope.name = 'hello miaov';
+
+});
+
+
+防止压缩报错
+var m1 = angular.module('myApp',[]);/初始化模块对象 数组里面写依赖
+m1.controller('Aaa',['$scope',function($scope){
+	$scope.name = 'hello angular';
+
+}]);
+
+m1.controller('Bbb',function($scope){
+	$scope.name = 'hello miaov';
+
+});
+
+
+过滤器
+自定义过滤器 在行间使用 js表达式中使用 
+filter
+m1.filter('firstUpper',function(){//firstUpper就是自定义过滤器的名字
+   return function(str){
+	return str.charAt(0).toUpperCase() + str.substring(1);//数据转大写
+   }
+});
+
+m1.controller('Aaa',['$scope','$filter',function($scope,$filter){
+    $scope.name = 'hello';
+    //表达式的应用 过滤器
+    $scope.name = $filter('firstUpper')('hello');
+}]);
+
+
+自定义指令
+directive
+所有的自定义指令都是模块调用directive来实现的
+var m1 = angular.module('myApp',[]);
+m1.directive('myDrag',function(){//注意，这里myDrag是驼峰式的写法，页面是杠的形式连接的
+   return {
+	restrict:'A',
+	link:function(scope,element,attr){
+		var disX = 0;
+		var disY = 0;
+	attr.myDrag = angular.equals(attr.myDrag,'true');
+	element.on('mousedown',function(ev){
+	    var This = this,
+	    disX = ev.pageX - $(this).offset().left;
+	    disY = ev.pageY - $(this).offset().top;
+
+	if(attr.myDrag){
+	 var $line = $('<div>');
+	$line.css({width:$(this).outerWidth(),height:$(this).outerHeight,
+position:'absolute',left:$(this).offset().left,
+top:$(this).offset().top,border:'1px gray dotted'
+});
+
+$('body').append($line);
+	}
+$(document).on('mousemove',function(ev){
+	if(attr.myDrag){
+	 $line.css('left',ev.pageX - disX);
+	 $line.css('top',ev.pageY - disY);
+	}else{
+	$(This).css('left',ev.pageX - disX);
+	$(This).css('top',ev.pageY - disY);
+	}
+});
+$(document).on('mpuseup',function(){
+$(document).off();
+if(attr.myDrag){
+$(This).css('left',$line.offset().left);
+$(This).css('top',$line.offset().top);
+$line.remove();
+
+}
+});
+return false;
+
+	})
+	}
+   }
+});
+
+
+
+
+自定义服务
+factory
+provider
+
+var m1 = angular.module('myApp',[]);
+m1.factory('hello',function(){//起个服务的名字叫hello
+ return {
+	name:'123',//写了个属性叫name
+	show:function(){//函数
+		console.log(this.name);
+	}
+ };
+});
+
+m1.provider('hello',function(){
+   return {
+	$get:function(){
+	 return {
+		name:'123',
+		show:function(){
+		 console.log(this.name);
+		}
+	  }
+	}
+	};
+});
+
+模块间的通信
+angular.module
+
+
+provider供应商
+config
+名字+provider
+内部
+
+AngularJS插件
+ngSanitize //格式化字符串
+ngAnimate //运动
+ngCookie //cookie
+ngRoute //路由
+ngTouch //触屏
+
+把插件引入页面当中
+
+var m1 = angular.module('myApp',['ngSanitize']);
+m1.controller('Aaa',['$scope',function($scope){
+	$scope.text = '<h1>hello</h1>';
+}]);
+
+
+<div ng-controller-"Aaa">
+	<div>{{text}}</div>
+	<div ng-bind="text"></div>
+	<div ng-bind-html="text"></div>
+</div>
+
+表单验证
+$valid
+$invalid
+$pristine
+$dirty
+$error
+
+事件处理
+$on
+$emit
+$broadcast
+
+
+工具方法
+angular.bind
+angular.bootstrap
+angular.copy
+angular.element
+angular.equals
+angular.extend
+
+NG与JQ
+内置部分功能
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
